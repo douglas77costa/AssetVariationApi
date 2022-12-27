@@ -21,7 +21,7 @@ public class AssetController : Controller
     }
 
     /// <summary>
-    /// Get BTC assets
+    /// Get BTC-USD assets
     /// </summary>
     /// <returns></returns>
     [HttpGet]

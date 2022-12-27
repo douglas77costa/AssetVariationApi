@@ -48,7 +48,16 @@ public class AssetService : IAssetService
                     if (index != 0)
                     {
                         var dateTime = days[index];
-                        var value = Math.Round(response!.Chart.Result[0].Indicators.Quote[0].Open[index], 2);
+                        double value = 0;
+                        if (response!.Chart.Result[0].Indicators.Quote[0].Open[index] != null)
+                        {
+                            value = Math.Round(response!.Chart.Result[0].Indicators.Quote[0].Open[index] ?? 0, 2);
+                        }
+                        else
+                        {
+                            value = variation[index - 2].Value;
+                        }
+
                         var assetResponse = new GetAssetResponse
                         {
                             Day = index,
